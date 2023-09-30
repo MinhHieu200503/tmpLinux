@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <input id="data"></input>
+        <button style="width: 50px;height: 20px;" id="submit"></button>
+    </body>
+    <script>
+        const data = document.getElementById('data');
+        const submit = document.getElementById('submit');
+        submit.addEventListener('click', (e) => {
+            const content = data.value;
+            console.log(content);
+            fetch("http://localhost:3000/post",{
+                method:"POST",
+                headers:{
+                    "Content-Type": "application/json",
+                },
+                body:JSON.stringify({"content":content})
+            })
+        });
+    </script>
+</html>
